@@ -9,8 +9,8 @@ const MailboxForm = (props) => {
     props.addMailBox(formData);
     setFormData(intialMailboxForm);
   };
-  const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.id]: event.target.value });
+  const handleChange = ({ target }) => {
+    setFormData({ ...formData, [target.id]: target.value });
   };
 
   return (
@@ -25,17 +25,26 @@ const MailboxForm = (props) => {
           onChange={handleChange}
         />
         <label htmlFor="boxSize">Enter A boxholder</label>
-        {/* <select id="boxSize" value={formData.boxSize} onChange={handleChange}>
+        <select
+          name="boxSize"
+          id="boxSize"
+          value={formData.boxSize}
+          onChange={handleChange}
+        >
+          <option hidden disabled value="">
+            Select one
+          </option>
+
           <option value="Small">Small</option>
           <option value="Mid">Mid</option>
           <option value="Large">Large</option>
-        </select> */}
-        <input
+        </select>
+        {/* <input
           type="text"
           id="boxSize"
           value={formData.boxSize}
           onChange={handleChange}
-        />
+        /> */}
 
         <button type="submit">Submit</button>
       </form>
